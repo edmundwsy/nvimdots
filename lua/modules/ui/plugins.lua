@@ -34,6 +34,7 @@ ui["nvim-tree/nvim-tree.lua"] = {
 	cmd = {
 		"NvimTreeToggle",
 		"NvimTreeOpen",
+		"NvimTreeFocus",
 		"NvimTreeFindFile",
 		"NvimTreeFindFileToggle",
 		"NvimTreeRefresh",

@@ -9,10 +9,10 @@ local plug_map = {
 	["n|<A-q>"] = map_cr("BufDel"):with_noremap():with_silent(),
 	-- Bufferline
 	["n|gb"] = map_cr("BufferLinePick"):with_noremap():with_silent(),
-	["n|<A-j>"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent(),
-	["n|<A-k>"] = map_cr("BufferLineCyclePrev"):with_noremap():with_silent(),
-	["n|<A-S-j>"] = map_cr("BufferLineMoveNext"):with_noremap():with_silent(),
-	["n|<A-S-k>"] = map_cr("BufferLineMovePrev"):with_noremap():with_silent(),
+	["n|<A-k>"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent(),
+	["n|<A-j>"] = map_cr("BufferLineCyclePrev"):with_noremap():with_silent(),
+	["n|<A-S-k>"] = map_cr("BufferLineMoveNext"):with_noremap():with_silent(),
+	["n|<A-S-j>"] = map_cr("BufferLineMovePrev"):with_noremap():with_silent(),
 	["n|<leader>be"] = map_cr("BufferLineSortByExtension"):with_noremap(),
 	["n|<leader>bd"] = map_cr("BufferLineSortByDirectory"):with_noremap(),
 	["n|<A-1>"] = map_cr("BufferLineGoToBuffer 1"):with_noremap():with_silent(),
@@ -70,9 +70,9 @@ local plug_map = {
 	["n|<leader>tq"] = map_cr("TroubleToggle quickfix"):with_noremap():with_silent(),
 	["n|<leader>tl"] = map_cr("TroubleToggle loclist"):with_noremap():with_silent(),
 	-- Plugin nvim-tree
-	["n|<C-n>"] = map_cr("NvimTreeToggle"):with_noremap():with_silent(),
-	["n|<leader>nf"] = map_cr("NvimTreeFindFile"):with_noremap():with_silent(),
-	["n|<leader>nr"] = map_cr("NvimTreeRefresh"):with_noremap():with_silent(),
+	["n|<C-e>"] = map_cr("NvimTreeFocus"):with_noremap():with_silent(),
+	["n|<leader>ef"] = map_cr("NvimTreeFindFile"):with_noremap():with_silent(),
+	["n|<leader>er"] = map_cr("NvimTreeRefresh"):with_noremap():with_silent(),
 	-- Plugin Telescope
 	["n|<leader>u"] = map_cr("lua require('telescope').extensions.undo.undo()"):with_noremap():with_silent(),
 	["n|<leader>fp"] = map_cu("lua require('telescope').extensions.projects.projects{}"):with_noremap():with_silent(),
@@ -94,7 +94,7 @@ local plug_map = {
 	["n|;"] = map_cmd("v:lua.enhance_ft_move(';')"):with_expr(),
 	["n|,"] = map_cmd("v:lua.enhance_ft_move(',')"):with_expr(),
 	-- Plugin Hop
-	["n|<leader>w"] = map_cu("HopWord"):with_noremap(),
+	["n|<leader>l"] = map_cu("HopWord"):with_noremap(),
 	["n|<leader>j"] = map_cu("HopLine"):with_noremap(),
 	["n|<leader>k"] = map_cu("HopLine"):with_noremap(),
 	["n|<leader>c"] = map_cu("HopChar1"):with_noremap(),
