@@ -67,7 +67,14 @@ function config.nvim_treesitter()
 			extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
 			max_file_lines = 2000, -- Do not enable for files with more than 2000 lines, int
 		},
-		context_commentstring = { enable = true, enable_autocmd = false },
+		context_commentstring = {
+			enable = true,
+			enable_autocmd = false,
+			config = {
+				typescript = { __default = "// %s", __multiline = "/* %s */" },
+				cpp = { __default = "// %s", __multiline = "/* %s */" },
+			},
+		},
 		matchup = { enable = true },
 	})
 	require("nvim-treesitter.install").prefer_git = true

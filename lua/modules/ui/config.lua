@@ -41,7 +41,7 @@ function config.alpha()
 		button("space f c", " Scheme change", leader, "<cmd>Telescope colorscheme<cr>"),
 		button("space f r", " File frecency", leader, "<cmd>Telescope frecency<cr>"),
 		button("space f e", " File history", leader, "<cmd>Telescope oldfiles<cr>"),
-		button("space f p", " Project find", leader, "<cmd>Telescope projects<cr>"),
+		button("space f p", " Project find", leader, "<cmd>Telescope project<cr>"),
 		button("space f f", " File find", leader, "<cmd>Telescope find_files<cr>"),
 		button("space f n", " File new", leader, "<cmd>enew<cr>"),
 		button("space f w", " Word find", leader, "<cmd>Telescope live_grep<cr>"),
@@ -579,7 +579,6 @@ function config.nvim_tree()
 		ui = require("modules.ui.icons").get("ui"),
 	}
 	vim.api.nvim_command([[packadd nvim-window-picker]])
-
 	require("nvim-tree").setup({
 		create_in_closed_folder = false,
 		respect_buf_cwd = false,
@@ -595,6 +594,26 @@ function config.nvim_tree()
 		sort_by = "name",
 		sync_root_with_cwd = true,
 		view = {
+			mappings = {
+				list = {
+					{
+						key = "e",
+						action = "edit_in_place",
+					},
+					{
+						key = "<C-e>",
+						cb = "<cmd>NvimTreeClose<cr>",
+					},
+					{
+						key = "y",
+						action = "copy",
+					},
+					{
+						key = "rb",
+						action = "rename_basename",
+					},
+				},
+			},
 			adaptive_size = false,
 			centralize_selection = false,
 			width = 30,
