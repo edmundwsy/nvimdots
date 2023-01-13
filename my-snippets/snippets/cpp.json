@@ -50,11 +50,12 @@
     "rosClassTemplateSimple": {
         "prefix": "rosClassTemplate",
         "body": [
+            "/** @brief",
+            " * @class ${1}",
+            "*/",
             "class ${1:class_name}",
             "{",
             "public:",
-            "\t${1}(ros::NodeHandle &nh)",
-            "\t{",
             "\t\t${0}",
             "\t}\n",
             "private:\n",
@@ -70,8 +71,8 @@
     "ros::Publisher": {
         "prefix": "rosPublisher",
         "body": [
-            "ros::Publisher ${1:/*pub_name*/};",
-            "${1} = nh.advertise<${2: /*msg_type*/}>(\"${3:/*topic_name*/}\", ${5:10});\n$0"
+            "ros::Publisher ${1:pub_name};",
+            "${1} = nh.advertise<${2: msg_type}>(\"${3:topic_name}\", ${5:10});\n$0"
         ],
         "description": "ros::Publisher"
     },
@@ -79,7 +80,7 @@
         "prefix": "rosSubcriber",
         "body": [
             "ros::Subscriber ${1:/*sub_name*/};",
-            "${1} = nh.subscribe<${2:/*msg_type*/}>(\"${3:/*topic_name*/}\", ${4:10}, ${5:/*subscribe_callback_name*/});",
+            "${1} = nh.subscribe<${2:msg_type}>(\"${3:topic_name}\", ${4:10}, ${5:subscribe_callback_name});",
             "$0"
         ],
         "description": "ros::Subscriber"
@@ -87,7 +88,7 @@
     "ros::Subscriber callback": {
         "prefix": "rosSubscriberCallback",
         "body": [
-            "void ${1:/*subscribe_callback_name*/}(const ${2:/*msg_type*/} &msg)",
+            "void ${1:subscribe_callback_name}(const ${2:msg_type} &msg)",
             "{",
             "\t${0}",
             "}"
@@ -97,8 +98,8 @@
     "ros::ServiceServer": {
         "prefix": "rosServiceServer",
         "body": [
-            "ros::ServiceServer ${1:/*service_server_object*/};",
-            "${1} = nh.advertiseService(\"${2:/*service_name*/}\", ${3:/*service_callback_func*/});",
+            "ros::ServiceServer ${1:service_server_object};",
+            "${1} = nh.advertiseService(\"${2:service_name}\", ${3:service_callback_func});",
             "$0"
         ],
         "description": "ros::ServiceServer"
@@ -106,7 +107,7 @@
     "ros::ServiceServer callback": {
         "prefix": "rosServiceCallback",
         "body": [
-            "bool ${1:/*service_callback_func*/}(${2:/*service_type*/}::Request &req, ${2}::Response &res)",
+            "bool ${1:service_callback_func}(${2:service_type}::Request &req, ${2}::Response &res)",
             "{",
             "\t${0}",
             "\treturn true;",
@@ -117,8 +118,8 @@
     "ros::ServiceClient": {
         "prefix": "rosServiceClient",
         "body": [
-            "ros::ServiceClient ${1:/*service_client_object*/};",
-            "${1} = nh.serviceClient<${2:/*service_type*/}>(\"${3:/*service_name*/}\");",
+            "ros::ServiceClient ${1:service_client_object};",
+            "${1} = nh.serviceClient<${2:service_type}>(\"${3:service_name}\");",
             "$0"
         ],
         "description": "ros::ServiceClient"
@@ -126,7 +127,7 @@
     "ros::ActionClient": {
         "prefix": "rosActionClient",
         "body": [
-            "ros::SimpleActionClient<${1:/*action_type*/}> ${2:/*action_client_object*/}(${3:/*action_name*/});",
+            "ros::SimpleActionClient<${1:action_type}> ${2:action_client_object}(${3:action_name});",
             "$0"
         ],
         "description": "ros::ActionClient"
@@ -145,30 +146,30 @@
         "description": "ros::Rate … while"
     },
     "ros error": {
-        "prefix": "roserr",
+        "prefix": "ROSERROR",
         "body": "ROS_ERROR_STREAM(${1});\n$0",
         "description": "ros error"
     },
     "ros info": {
-        "prefix": "rosInfo",
+        "prefix": "ROSINFO",
         "body": "ROS_INFO_STREAM(${1});\n$0",
         "description": "ros info"
     },
     "ros debug": {
-        "prefix": "rosdbg",
+        "prefix": "ROSDBG",
         "body": "ROS_DEBUG_STREAM(${1});\n$0",
         "description": "ros debug"
     },
     "ros info var": {
-        "prefix": "rosInfoVar",
+        "prefix": "ROSINFOVAR",
         "body": "ROS_INFO_STREAM(\"${2:$1}: \" << $1);\n$0"
     },
     "ros debug var": {
-        "prefix": "rosdbgvar",
+        "prefix": "ROSDBGVAR",
         "body": "ROS_DEBUG_STREAM(\"${1:} = \" << ${2:$1});\n$0"
     },
     "ros assert": {
-        "prefix": "rosass",
+        "prefix": "ROSASS",
         "body": "ROS_ASSERT(${1:});\n$0"
     },
     "ros get param": {
@@ -182,5 +183,277 @@
             "$0"
         ],
         "description": "ros param"
-    }
+    },
+	"for": {
+		"prefix": "for",
+		"body": [
+			"for (${size_t} ${i} = ${1:0}; ${i} < ${2:length}; ${i}++)",
+			"{",
+			"	$3",
+			"}"
+		],
+		"description": "Code snippet for 'for' loop"
+	},
+	"forr": {
+		"prefix": "forr",
+		"body": [
+			"for (int ${i} = ${1:length} - 1; ${i} >= ${2:0}; ${i}--)",
+			"{",
+			"	$3",
+			"}"
+		],
+		"description": "Code snippet for reverse 'for' loop"
+	},
+	"do": {
+		"prefix": "do",
+		"body": [
+			"do",
+			"{",
+			"	$1",
+			"} while($2);"
+		],
+		"description": "Code snippet for do...while loop"
+	},
+	"while": {
+		"prefix": "while",
+		"body": [
+			"while ($1)",
+			"{",
+			"	$2",
+			"}"
+		],
+		"description": "Code snippet for while loop"
+	},
+	"foreach": {
+		"prefix": "foreach",
+		"body": [
+			"for(auto ${var} : ${collection_to_loop})",
+			"{",
+			"	$1",
+			"}"
+		],
+		"description": "Code snippet for range-based for loop (c++11) statement"
+	},
+	"if": {
+		"prefix": "if",
+		"body": [
+			"if ($1)",
+			"{",
+			"	$2",
+			"}"
+		],
+		"description": "Code snippet for if statement"
+	},
+	"else": {
+		"prefix": "else",
+		"body": [
+			"else",
+			"{",
+			"	$1",
+			"}"
+		],
+		"description": "Code snippet for else statement"
+	},
+	"else if": {
+		"prefix": "else if",
+		"body": [
+			"else if ($1)",
+			"{",
+			"	$2",
+			"}"
+		],
+		"description": "Code snippet for else-if statement"
+	},
+	"enum": {
+		"prefix": "enum",
+		"body": [
+			"enum ${MyEnum}",
+			"{",
+			"	$1",
+			"};"
+		],
+		"description": "Code snippet for enum"
+	},
+	"enum class": {
+		"prefix": "enum class",
+		"body": [
+			"enum class ${MyClass} { };"
+		],
+		"description": "Code snippet for enum class (c++11)"
+	},
+	"class": {
+		"prefix": "class",
+		"body": [
+			"class ${MyClass}",
+			"{",
+			"public:",
+			"	${MyClass}();",
+			"	${MyClass}(${MyClass} &&) = default;",
+			"	${MyClass}(const ${MyClass} &) = default;",
+			"	${MyClass} &operator=(${MyClass} &&) = default;",
+			"	${MyClass} &operator=(const ${MyClass} &) = default;",
+			"	~${MyClass}();",
+			"",
+			"private:",
+			"	$1",
+			"};",
+			"",
+			"${MyClass}::${MyClass}()",
+			"{",
+			"}",
+			"",
+			"${MyClass}::~${MyClass}()",
+			"{",
+			"}"
+		],
+		"description": "Code snippet for class"
+	},
+	"classi": {
+		"prefix": "classi",
+		"body": [
+			"class ${MyClass}",
+			"{",
+			"public:",
+			"	${MyClass}() = default;",
+			"	${MyClass}(${MyClass} &&) = default;",
+			"	${MyClass}(const ${MyClass} &) = default;",
+			"	${MyClass} &operator=(${MyClass} &&) = default;",
+			"	${MyClass} &operator=(const ${MyClass} &) = default;",
+			"	~${MyClass}() = default;",
+			"",
+			"private:",
+			"	$1",
+			"};"
+		],
+		"description": "Code snippet for class with inline constructor/destructor"
+	},
+	"interface": {
+		"prefix": "interface",
+		"body": [
+			"__interface I${Interface}",
+			"{",
+			"	$1",
+			"};"
+		],
+		"description": "Code snippet for interface (Visual C++)"
+	},
+	"namespace": {
+		"prefix": "namespace",
+		"body": [
+			"namespace ${MyNamespace}",
+			"{",
+			"	$1",
+			"}"
+		],
+		"description": "Code snippet for namespace"
+	},
+	"#ifdef": {
+		"prefix": "#ifdef",
+		"body": [
+			"#ifdef ${DEBUG}",
+			"$1",
+			"#endif // ${DEBUG}"
+		],
+		"description": "Code snippet for #ifdef"
+	},
+	"#ifndef": {
+		"prefix": "#ifndef",
+		"body": [
+			"#ifndef ${1:1}",
+			"$2",
+			"#endif // !$1"
+		],
+		"description": "Code snippet for #ifndef"
+	},
+	"#if": {
+		"prefix": "#if",
+		"body": [
+			"#ifdef ${1:0}",
+			"$2",
+			"#endif // $1"
+		],
+		"description": "Code snippet for #if"
+	},
+	"struct": {
+		"prefix": "struct",
+		"body": [
+			"struct ${MyStruct}",
+			"{",
+			"	$1",
+			"};"
+		],
+		"description": "Code snippet for struct"
+	},
+	"switch": {
+		"prefix": "switch",
+		"body": [
+			"switch (${switch_on})",
+			"{",
+			"default:",
+			"	break;$1",
+			"}"
+		],
+		"description": "Code snippet for switch statement"
+	},
+	"try": {
+		"prefix": "try",
+		"body": [
+			"try",
+			"{",
+			"	",
+			"}",
+			"catch (const std::exception&)",
+			"{",
+			"	$1",
+			"}"
+		],
+		"description": "Code snippet for try catch"
+	},
+	"union": {
+		"prefix": "union",
+		"body": [
+			"union ${MyUnion}",
+			"{",
+			"	$1",
+			"};"
+		],
+		"description": "Code snippet for union"
+	},
+	"cout": {
+		"prefix": "cout",
+		"body": [
+			"std::cout << \"${1:/* message */}\" << std::endl;"
+		],
+		"description": "Code snippet for printing to std::cout, provided the header is set"
+	},
+	"#inc": {
+		"prefix": "#inc",
+		"body": [
+			"#include \"$1\""
+		],
+		"description": "Code snippet for #include \" \""
+	},
+	"#inc<": {
+		"prefix": "#inc<",
+		"body": [
+			"#include <$1>"
+		],
+		"description": "Code snippet for #include \" \""
+	},
+	"#def": {
+		"prefix": "#def",
+		"body": [
+			"#define \"$1\" \"$2\" "
+			],
+		"description": "Code snippet for #define \" \""
+	},
+	"main": {
+		"prefix": "main",
+		"body": [
+			"int main(int argc, const char** argv) {",
+			"    return 0;",
+			"}"
+		],
+		"description": "Code snippet for main function"
+	}
 }
