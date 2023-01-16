@@ -321,14 +321,11 @@ function config.mason_install()
 			-- "editorconfig-checker",
 
 			"stylua",
-
 			"black",
-
+			"clang-format",
 			"prettier",
-
 			"shellcheck",
 			"shfmt",
-
 			-- "vint",
 		},
 
@@ -358,7 +355,9 @@ function config.copilot()
 			},
 			suggestion = {
 				-- if true, it can interfere with completions in copilot-cmp
-				enabled = false,
+				enabled = true,
+				autotrigger = true,
+				debounce = 100,
 			},
 			filetypes = {
 				["dap-repl"] = false,

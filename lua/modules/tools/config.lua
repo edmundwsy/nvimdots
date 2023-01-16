@@ -424,7 +424,7 @@ function config.legendary()
 		["[g"] = "git: Goto prev hunk",
 		["g["] = "lsp: Goto prev diagnostic",
 		["g]"] = "lsp: Goto next diagnostic",
-		["<leader>w"] = "jump: Goto word",
+		["<leader>;"] = "jump: Goto word",
 		["<leader>j"] = "jump: Goto line",
 		["<leader>k"] = "jump: Goto line",
 		["<leader>c"] = "jump: Goto one char",
@@ -432,7 +432,7 @@ function config.legendary()
 		["<leader>o"] = "edit: Check spell",
 		["<leader>u"] = "edit: Show undo history",
 		["<leader>r"] = "tool: Code snip run",
-		["<F12>"] = "tool: Markdown preview",
+		["<leader>m"] = "tool: Markdown preview",
 	})
 end
 

@@ -1,7 +1,7 @@
 local config = {}
 local sessions_dir = vim.fn.stdpath("data") .. "/sessions/"
 local use_ssh = require("core.settings").use_ssh
-
+--
 function config.nvim_treesitter()
 	vim.api.nvim_set_option_value("foldmethod", "expr", {})
 	vim.api.nvim_set_option_value("foldexpr", "nvim_treesitter#foldexpr()", {})
@@ -26,6 +26,9 @@ function config.nvim_treesitter()
 			"vue",
 			"css",
 		},
+		-- tree_docs = {
+		-- 	enable = true,
+		-- },
 		highlight = {
 			enable = true,
 			disable = { "vim" },
@@ -537,5 +540,20 @@ function config.smartyank()
 		},
 	})
 end
+
+-- function config.nvim_tree_docs()
+-- 	require("nvim-treesitter.configs").setup({
+-- 		tree_docs = {
+-- 			enable = true,
+-- 			spec_config = {
+-- 				jsdoc = {
+-- 					slots = {
+-- 						class = { author = true },
+-- 					},
+-- 				},
+-- 			},
+-- 		},
+-- 	})
+-- end
 
 return config

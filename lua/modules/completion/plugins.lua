@@ -70,4 +70,8 @@ completion["zbirenbaum/copilot-cmp"] = {
 	end,
 }
 
+-- completion["kkoomen/vim-doge"] = {
+--   run = ':call doge#install()'
+-- }
+
 return completion

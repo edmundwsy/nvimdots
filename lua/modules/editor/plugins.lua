@@ -138,6 +138,19 @@ editor["ibhagwan/smartyank.nvim"] = {
 	config = conf.smartyank,
 }
 
+editor["907th/vim-auto-save"] = {
+	opt = false,
+	config = function()
+		vim.g.auto_save = 1
+	end,
+}
+
+-- editor["nvim-treesitter/nvim-tree-docs"] = {
+-- 	opt = false,
+-- 	after = "nvim-treesitter",
+-- 	config = conf.nvim_tree_docs,
+-- }
+
 -- only for fcitx5 user who uses non-English language during coding
 -- editor["brglng/vim-im-select"] = {
 -- 	opt = true,
