@@ -164,11 +164,11 @@ function M.format(opts)
 		local result, err = client.request_sync("textDocument/formatting", params, timeout_ms, bufnr)
 		if result and result.result then
 			vim.lsp.util.apply_text_edits(result.result, bufnr, client.offset_encoding)
-			vim.notify(
-				string.format("Format successfully with %s!", client.name),
-				vim.log.levels.INFO,
-				{ title = "LSP Format Success!" }
-			)
+			-- vim.notify(
+			-- 	string.format("Format successfully with %s!", client.name),
+			-- 	vim.log.levels.INFO,
+			-- 	{ title = "LSP Format Success!" }
+			-- )
 		elseif err then
 			vim.notify(
 				string.format("[LSP][%s] %s", client.name, err),

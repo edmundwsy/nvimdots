@@ -30,23 +30,23 @@ local plug_map = {
 	["n|<leader>pi"] = map_cr("PackerInstall"):with_silent():with_noremap():with_nowait(),
 	["n|<leader>pc"] = map_cr("PackerClean"):with_silent():with_noremap():with_nowait(),
 	-- Lsp mapp work when insertenter and lsp start
-	["n|<leader>li"] = map_cr("LspInfo"):with_noremap():with_silent():with_nowait(),
-	["n|<leader>lr"] = map_cr("LspRestart"):with_noremap():with_silent():with_nowait(),
+	["n|gli"] = map_cr("LspInfo"):with_noremap():with_silent():with_nowait(),
+	["n|glr"] = map_cr("LspRestart"):with_noremap():with_silent():with_nowait(),
 	["n|go"] = map_cr("Lspsaga outline"):with_noremap():with_silent(),
 	["n|g["] = map_cr("Lspsaga diagnostic_jump_prev"):with_noremap():with_silent(),
 	["n|g]"] = map_cr("Lspsaga diagnostic_jump_next"):with_noremap():with_silent(),
-	["n|<leader>sl"] = map_cr("Lspsaga show_line_diagnostics"):with_noremap():with_silent(),
-	["n|<leader>sc"] = map_cr("Lspsaga show_cursor_diagnostics"):with_noremap():with_silent(),
+	["n|gsl"] = map_cr("Lspsaga show_line_diagnostics"):with_noremap():with_silent(),
+	["n|gsc"] = map_cr("Lspsaga show_cursor_diagnostics"):with_noremap():with_silent(),
 	["n|gs"] = map_cr("lua vim.lsp.buf.signature_help()"):with_noremap():with_silent(),
 	["n|gr"] = map_cr("Lspsaga rename"):with_noremap():with_silent(),
-	["n|K"] = map_cr("Lspsaga hover_doc"):with_noremap():with_silent(),
+	["n|gk"] = map_cr("Lspsaga hover_doc"):with_noremap():with_silent(),
 	["n|ga"] = map_cr("Lspsaga code_action"):with_noremap():with_silent(),
 	["v|ga"] = map_cu("Lspsaga code_action"):with_noremap():with_silent(),
 	["n|gd"] = map_cr("Lspsaga peek_definition"):with_noremap():with_silent(),
 	["n|gD"] = map_cr("Lspsaga goto_definition"):with_noremap():with_silent(),
 	["n|gh"] = map_cr("Lspsaga lsp_finder"):with_noremap():with_silent(),
-	["n|<leader>ci"] = map_cr("Lspsaga incoming_calls"):with_noremap():with_silent(),
-	["n|<leader>co"] = map_cr("Lspsaga outgoing_calls"):with_noremap():with_silent(),
+	["n|gci"] = map_cr("Lspsaga incoming_calls"):with_noremap():with_silent(),
+	["n|gco"] = map_cr("Lspsaga outgoing_calls"):with_noremap():with_silent(),
 	["n|gps"] = map_cr("G push"):with_noremap():with_silent(),
 	["n|gpl"] = map_cr("G pull"):with_noremap():with_silent(),
 	-- toggleterm
@@ -80,7 +80,10 @@ local plug_map = {
 	-- Plugin Telescope
 	["n|<leader>u"] = map_cr("lua require('telescope').extensions.undo.undo()"):with_noremap():with_silent(),
 	["n|<leader>fp"] = map_cu("lua require('telescope').extensions.projects.projects{}"):with_noremap():with_silent(),
-	["n|<leader>fr"] = map_cu("lua require('telescope').extensions.frecency.frecency{}"):with_noremap():with_silent(),
+	["n|<leader>fq"] = map_cu("lua require('telescope').extensions.frecency.frecency{}"):with_noremap():with_silent(),
+	["n|<leader>fr"] = map_cu("lua require('telescope').extensions.ros.packages{cwd='.' }")
+		:with_noremap()
+		:with_silent(),
 	["n|<leader>fw"] = map_cu("lua require('telescope').extensions.live_grep_args.live_grep_args{}")
 		:with_noremap()
 		:with_silent(),

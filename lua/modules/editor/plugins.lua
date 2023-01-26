@@ -145,6 +145,13 @@ editor["907th/vim-auto-save"] = {
 	end,
 }
 
+editor["kkoomen/vim-doge"] = {
+	run = ":call doge#install()",
+	config = function()
+		vim.g.doge_mapping = "gx"
+	end,
+}
+
 -- editor["nvim-treesitter/nvim-tree-docs"] = {
 -- 	opt = false,
 -- 	after = "nvim-treesitter",

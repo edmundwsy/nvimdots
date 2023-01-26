@@ -36,6 +36,15 @@ tools["nvim-telescope/telescope-live-grep-args.nvim"] = {
 	opt = true,
 	after = "telescope-zoxide",
 }
+tools["bi0ha2ard/telescope-ros.nvim"] = {
+	opt = true,
+	after = "telescope.nvim",
+}
+-- tools["xiyaowong/telescope-emoji.nvim"] = {
+-- 	opt = true,
+-- 	after = "telescope.nvim",
+-- }
+
 tools["michaelb/sniprun"] = {
 	opt = true,
 	run = "bash ./install.sh",

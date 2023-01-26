@@ -269,6 +269,7 @@ function config.cmp()
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
+					-- cmp.complete({ select = true })
 				elseif require("luasnip").expand_or_jumpable() then
 					vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
 				elseif has_words_before() then
@@ -279,6 +280,7 @@ function config.cmp()
 			end, { "i", "s" }),
 			["<S-Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
+					-- cmp.select_next_item()
 					cmp.select_prev_item()
 				elseif require("luasnip").jumpable(-1) then
 					vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")

@@ -8,6 +8,7 @@ function config.telescope()
 	vim.api.nvim_command([[packadd telescope-zoxide]])
 	vim.api.nvim_command([[packadd telescope-live-grep-args.nvim]])
 	vim.api.nvim_command([[packadd telescope-undo.nvim]])
+	vim.api.nvim_command([[packadd telescope-ros.nvim]])
 
 	local icons = { ui = require("modules.ui.icons").get("ui", true) }
 	local telescope_actions = require("telescope.actions.set")
@@ -103,15 +104,17 @@ function config.telescope()
 	require("telescope").load_extension("frecency")
 	require("telescope").load_extension("live_grep_args")
 	require("telescope").load_extension("undo")
+	require("telescope").load_extension("ros")
+	-- require("telescope").load_extension("gitmoji")
 end
 
 function config.project()
 	require("project_nvim").setup({
 		manual_mode = false,
 		detection_methods = { "lsp", "pattern" },
-		patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
+		patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", ".catkin_workspace" },
 		ignore_lsp = { "efm", "copilot" },
-		exclude_dirs = {},
+		exclude_dirs = { "./logs" },
 		show_hidden = false,
 		silent_chdir = true,
 		scope_chdir = "global",
