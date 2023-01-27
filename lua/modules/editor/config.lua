@@ -34,7 +34,7 @@ function config.nvim_treesitter()
 		highlight = {
 			enable = true,
 			disable = { "vim" },
-			additional_vim_regex_highlighting = false,
+			additional_vim_regex_highlighting = { "c", "cpp" },
 		},
 		textobjects = {
 			select = {
@@ -108,7 +108,6 @@ function config.illuminate()
 			"norg",
 			"NvimTree",
 			"Outline",
-			"packer",
 			"toggleterm",
 		},
 		under_cursor = false,
@@ -274,7 +273,6 @@ end
 function config.dap()
 	local icons = { dap = require("modules.ui.icons").get("dap") }
 
-	vim.api.nvim_command([[packadd nvim-dap-ui]])
 	local dap = require("dap")
 	local dapui = require("dapui")
 
@@ -440,26 +438,6 @@ function config.specs()
 		},
 		ignore_filetypes = {},
 		ignore_buftypes = { nofile = true },
-	})
-end
-
-function config.tabout()
-	require("tabout").setup({
-		tabkey = "<A-l>",
-		backwards_tabkey = "<A-h>",
-		ignore_beginning = false,
-		act_as_tab = true,
-		enable_backward = true,
-		completion = true,
-		tabouts = {
-			{ open = "'", close = "'" },
-			{ open = '"', close = '"' },
-			{ open = "`", close = "`" },
-			{ open = "(", close = ")" },
-			{ open = "[", close = "]" },
-			{ open = "{", close = "}" },
-		},
-		exclude = {},
 	})
 end
 

@@ -1,5 +1,5 @@
 local settings = {}
-local home = os.getenv("HOME")
+local home = require("core.global").home
 
 settings["use_ssh"] = true
 
@@ -15,5 +15,14 @@ settings["format_disabled_dirs"] = {
 ---Example: { sky = "#04A5E5" }
 ---@type palette
 settings["palette_overwrite"] = {}
+
+-- Set the colorscheme to use here.
+-- Available values are: `catppuccin`, `edge`, `nord`.
+settings["colorscheme"] = "catppuccin"
+
+-- Set background color to use here.
+-- Useful for when you want to use a colorscheme that has a light and dark variant like `edge`.
+-- Available values are: `dark`, `light`.
+settings["background"] = "dark"
 
 return settings
