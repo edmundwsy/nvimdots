@@ -47,8 +47,4 @@ completion["zbirenbaum/copilot.lua"] = {
 	},
 }
 
--- completion["kkoomen/vim-doge"] = {
---   run = ':call doge#install()'
--- }
-
 return completion

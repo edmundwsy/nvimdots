@@ -117,14 +117,16 @@ editor["ibhagwan/smartyank.nvim"] = {
 }
 
 editor["907th/vim-auto-save"] = {
-	opt = false,
+	lazy = false,
 	config = function()
 		vim.g.auto_save = 1
 	end,
 }
 
 editor["kkoomen/vim-doge"] = {
-	run = ":call doge#install()",
+	lazy = true,
+	build = "npm i --no-save && npm run build:binary:unix",
+	-- build = ":call doge#install()",
 	config = function()
 		vim.g.doge_mapping = "gx"
 	end,

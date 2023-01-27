@@ -9,6 +9,15 @@ ui["sainnhe/edge"] = {
 	lazy = true,
 	config = conf.edge,
 }
+ui["projekt0n/github-nvim-theme"] = {
+	lazy = false,
+	config = conf.github_theme,
+}
+
+ui["tanvirtin/monokai.nvim"] = {
+	lazy = false,
+	config = conf.monokai_theme,
+}
 ui["catppuccin/nvim"] = {
 	lazy = false,
 	name = "catppuccin",

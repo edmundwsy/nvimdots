@@ -984,4 +984,24 @@ function config.fidget()
 	})
 end
 
+function config.github_theme()
+	local transparent_background = false -- Set background transparency here!
+	require("github-theme").setup({
+		theme_style = "dark",
+		function_style = "italic",
+		sidebars = { "qf", "vista_kind", "terminal", "packer" },
+
+		-- Change the "hint" color to the "orange" color, and make the "error" color bright red
+		colors = { hint = "orange", error = "#ff0000" },
+	})
+end
+
+function config.monokai_theme()
+	local transparent_background = false -- Set background transparency here!
+	require("monokai").setup({})
+	require("monokai").setup({ palette = require("monokai").pro })
+	require("monokai").setup({ palette = require("monokai").soda })
+	require("monokai").setup({ palette = require("monokai").ristretto })
+end
+
 return config

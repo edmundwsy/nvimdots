@@ -1,15 +1,6 @@
 local config = {}
 
 function config.telescope()
-	vim.api.nvim_command([[packadd sqlite.lua]])
-	vim.api.nvim_command([[packadd project.nvim]])
-	vim.api.nvim_command([[packadd telescope-fzf-native.nvim]])
-	vim.api.nvim_command([[packadd telescope-frecency.nvim]])
-	vim.api.nvim_command([[packadd telescope-zoxide]])
-	vim.api.nvim_command([[packadd telescope-live-grep-args.nvim]])
-	vim.api.nvim_command([[packadd telescope-undo.nvim]])
-	vim.api.nvim_command([[packadd telescope-ros.nvim]])
-
 	local icons = { ui = require("modules.ui.icons").get("ui", true) }
 	local telescope_actions = require("telescope.actions.set")
 	local fixfolds = {
@@ -459,6 +450,14 @@ function config.dressing()
 			trim_prompt = true,
 		},
 	})
+end
+
+function config.todo()
+	require("todo-comments").setup()
+end
+
+function config.wakatime()
+	require("wakatime").setup()
 end
 
 return config

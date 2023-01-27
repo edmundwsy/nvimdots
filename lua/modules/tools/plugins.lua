@@ -17,40 +17,19 @@ tools["nvim-telescope/telescope.nvim"] = {
 		} },
 		{ "jvgrootveld/telescope-zoxide" },
 		{ "nvim-telescope/telescope-live-grep-args.nvim" },
+		{ "bi0ha2ard/telescope-ros.nvim" },
 	},
 }
-tools["ahmedkhalf/project.nvim"] = {
-	opt = true,
-	event = "BufReadPost",
-	config = conf.project,
-}
-tools["nvim-telescope/telescope-fzf-native.nvim"] = {
-	opt = true,
-	run = "make",
-	after = "telescope.nvim",
-}
-tools["nvim-telescope/telescope-frecency.nvim"] = {
-	opt = true,
-	after = "telescope-fzf-native.nvim",
-	requires = { { "kkharji/sqlite.lua", opt = true } },
-}
-tools["jvgrootveld/telescope-zoxide"] = {
-	opt = true,
-	after = "telescope-frecency.nvim",
-}
-tools["nvim-telescope/telescope-live-grep-args.nvim"] = {
-	opt = true,
-	after = "telescope-zoxide",
-}
-tools["bi0ha2ard/telescope-ros.nvim"] = {
-	opt = true,
-	after = "telescope.nvim",
-}
--- tools["xiyaowong/telescope-emoji.nvim"] = {
--- 	opt = true,
--- 	after = "telescope.nvim",
--- }
 
+tools["wakatime/vim-wakatime"] = {
+	lazy = false,
+}
+
+tools["folke/todo-comments.nvim"] = {
+	lazy = true,
+	event = "BufRead",
+	config = conf.todo,
+}
 tools["michaelb/sniprun"] = {
 	lazy = true,
 	build = "bash ./install.sh",
