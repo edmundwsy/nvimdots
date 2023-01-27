@@ -125,6 +125,7 @@ editor["907th/vim-auto-save"] = {
 
 editor["kkoomen/vim-doge"] = {
 	lazy = true,
+	event = "FileType",
 	build = "npm i --no-save && npm run build:binary:unix",
 	-- build = ":call doge#install()",
 	config = function()

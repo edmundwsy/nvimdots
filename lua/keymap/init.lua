@@ -146,6 +146,9 @@ local plug_map = {
 	-- Plugin Tabout
 	["i|<A-l>"] = map_cmd("<Plug>(TaboutMulti)"):with_silent():with_noremap(),
 	["i|<A-h>"] = map_cmd("<Plug>(TaboutBackMulti)"):with_silent():with_noremap(),
+	-- Plugin vim-doge
+	["n|<C-/>"] = map_cr("DogeGenerate"):with_silent():with_noremap(),
+	["i|<C-/>"] = map_cmd("<Esc><Cmd>DogeGenerate<CR>"):with_noremap():with_silent(),
 }
 
 bind.nvim_load_mapping(plug_map)
