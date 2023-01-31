@@ -115,6 +115,11 @@ editor["ibhagwan/smartyank.nvim"] = {
 	event = "BufReadPost",
 	config = conf.smartyank,
 }
+editor["LunarVim/bigfile.nvim"] = {
+	lazy = false,
+	config = conf.bigfile,
+	cond = require("core.settings").load_big_files_faster,
+}
 
 editor["907th/vim-auto-save"] = {
 	lazy = false,

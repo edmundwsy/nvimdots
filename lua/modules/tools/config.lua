@@ -2,18 +2,6 @@ local config = {}
 
 function config.telescope()
 	local icons = { ui = require("modules.ui.icons").get("ui", true) }
-	local telescope_actions = require("telescope.actions.set")
-	local fixfolds = {
-		hidden = true,
-		attach_mappings = function(_)
-			telescope_actions.select:enhance({
-				post = function()
-					vim.api.nvim_command([[:normal! zx"]])
-				end,
-			})
-			return true
-		end,
-	}
 	local lga_actions = require("telescope-live-grep-args.actions")
 
 	require("telescope").setup({
@@ -77,14 +65,6 @@ function config.telescope()
 					},
 				},
 			},
-		},
-		pickers = {
-			buffers = fixfolds,
-			find_files = fixfolds,
-			git_files = fixfolds,
-			grep_string = fixfolds,
-			live_grep = fixfolds,
-			oldfiles = fixfolds,
 		},
 	})
 
@@ -393,6 +373,7 @@ function config.legendary()
 				w = "lsp: Show workspace diagnostics",
 				q = "lsp: Show quickfix list",
 				l = "lsp: Show loclist",
+				r = "lsp: Show lsp references",
 			},
 		},
 		["g"] = {
@@ -401,7 +382,8 @@ function config.legendary()
 			D = "lsp: Goto definition",
 			h = "lsp: Show reference",
 			o = "lsp: Toggle outline",
-			r = "lsp: Rename",
+			r = "lsp: Rename in file range",
+			R = "lsp: Rename in project range",
 			s = "lsp: Signature help",
 			t = "lsp: Toggle trouble list",
 			b = "buffer: Buffer pick",

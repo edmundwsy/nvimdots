@@ -33,7 +33,7 @@ function config.lspsaga()
 	require("lspsaga").setup({
 		preview = {
 			lines_above = 1,
-			lines_below = 12,
+			lines_below = 17,
 		},
 		scroll_preview = {
 			scroll_down = "<C-j>",
@@ -67,12 +67,12 @@ function config.lspsaga()
 			sign = true,
 			enable_in_insert = true,
 			sign_priority = 20,
-			virtual_text = true,
+			virtual_text = false,
 		},
 		diagnostic = {
-			twice_into = false,
-			show_code_action = false,
+			show_code_action = true,
 			show_source = true,
+			jump_num_shortcut = true,
 			keys = {
 				exec_action = "<CR>",
 				quit = "q",
@@ -81,10 +81,10 @@ function config.lspsaga()
 		},
 		rename = {
 			quit = "<C-c>",
-			exec = "<CR>",
 			mark = "x",
 			confirm = "<CR>",
-			in_select = true,
+			exec = "<CR>",
+			in_select = false,
 		},
 		outline = {
 			win_position = "right",
@@ -101,12 +101,15 @@ function config.lspsaga()
 			},
 		},
 		symbol_in_winbar = {
-			in_custom = true,
 			enable = false,
 			separator = " " .. icons.ui.Separator,
 			hide_keyword = true,
 			show_file = false,
 			color_mode = true,
+		},
+		beacon = {
+			enable = true,
+			frequency = 12,
 		},
 		ui = {
 			theme = "round",
@@ -119,28 +122,13 @@ function config.lspsaga()
 			diagnostic = icons.ui.Bug,
 			incoming = icons.ui.Incoming,
 			outgoing = icons.ui.Outgoing,
-			colors = {
-				normal_bg = colors.base,
-				title_bg = colors.base,
-				red = colors.red,
-				megenta = colors.maroon,
-				orange = colors.peach,
-				yellow = colors.yellow,
-				green = colors.green,
-				cyan = colors.sapphire,
-				blue = colors.blue,
-				purple = colors.mauve,
-				white = colors.text,
-				black = colors.mantle,
-				fg = colors.text,
-			},
 			kind = {
 				-- Kind
 				Class = { icons.kind.Class, colors.yellow },
 				Constant = { icons.kind.Constant, colors.peach },
 				Constructor = { icons.kind.Constructor, colors.sapphire },
 				Enum = { icons.kind.Enum, colors.yellow },
-				EnumMember = { icons.kind.EnumMember, colors.rosewater },
+				EnumMember = { icons.kind.EnumMember, colors.teal },
 				Event = { icons.kind.Event, colors.yellow },
 				Field = { icons.kind.Field, colors.teal },
 				File = { icons.kind.File, colors.rosewater },
@@ -186,11 +174,6 @@ function config.cmp()
 	}
 	local t = function(str)
 		return vim.api.nvim_replace_termcodes(str, true, true, true)
-	end
-
-	local has_words_before = function()
-		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 	end
 
 	local border = function(hl)
@@ -410,6 +393,7 @@ function config.copilot()
 			},
 			filetypes = {
 				["dap-repl"] = false,
+				["big_file_disabled_ft"] = false,
 			},
 		})
 	end, 100)
