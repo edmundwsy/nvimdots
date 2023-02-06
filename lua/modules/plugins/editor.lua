@@ -62,8 +62,8 @@ editor["romainl/vim-cool"] = {
 	event = { "CursorMoved", "InsertEnter" },
 }
 editor["907th/vim-auto-save"] = {
-	lazy = false,
-	config = require("editor.vim-auto-save"),
+	lazy = true,
+	config = require("editor.auto-save"),
 }
 
 editor["kkoomen/vim-doge"] = {

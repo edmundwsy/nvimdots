@@ -40,7 +40,6 @@ local def_map = {
 	["c|<C-b>"] = map_cmd("<Left>"):with_noremap(),
 	["c|<C-f>"] = map_cmd("<Right>"):with_noremap(),
 	["c|<C-a>"] = map_cmd("<Home>"):with_noremap(),
-	["c|<C-e>"] = map_cmd("<End>"):with_noremap(),
 	["c|<C-d>"] = map_cmd("<Del>"):with_noremap(),
 	["c|<C-h>"] = map_cmd("<BS>"):with_noremap(),
 	["c|<C-t>"] = map_cmd([[<C-R>=expand("%:p:h") . "/" <CR>]]):with_noremap(),
