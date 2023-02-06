@@ -54,8 +54,8 @@ local plug_map = {
 	["n|go"] = map_cr("Lspsaga outline"):with_noremap():with_silent(),
 	["n|g["] = map_cr("Lspsaga diagnostic_jump_prev"):with_noremap():with_silent(),
 	["n|g]"] = map_cr("Lspsaga diagnostic_jump_next"):with_noremap():with_silent(),
-	["n|<leader>sl"] = map_cr("Lspsaga show_line_diagnostics"):with_noremap():with_silent(),
-	["n|<leader>sc"] = map_cr("Lspsaga show_cursor_diagnostics"):with_noremap():with_silent(),
+	["n|gsl"] = map_cr("Lspsaga show_line_diagnostics"):with_noremap():with_silent(),
+	["n|gsc"] = map_cr("Lspsaga show_cursor_diagnostics"):with_noremap():with_silent(),
 	["n|gs"] = map_callback(function()
 			vim.lsp.buf.signature_help()
 		end)
@@ -121,8 +121,13 @@ local plug_map = {
 		end)
 		:with_noremap()
 		:with_silent(),
-	["n|<leader>fr"] = map_callback(function()
+	["n|<leader>fq"] = map_callback(function()
 			require("telescope").extensions.frecency.frecency()
+		end)
+		:with_noremap()
+		:with_silent(),
+		["n|<leader>fr"] = map_callback(function()
+			require("telescope").extensions.ros.packages({cwd='.' })
 		end)
 		:with_noremap()
 		:with_silent(),

@@ -9,7 +9,7 @@ return function()
 			"stylua",
 
 			"black",
-
+			"clang-format",
 			"prettier",
 
 			"shellcheck",

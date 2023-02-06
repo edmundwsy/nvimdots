@@ -61,7 +61,18 @@ editor["romainl/vim-cool"] = {
 	lazy = true,
 	event = { "CursorMoved", "InsertEnter" },
 }
+editor["907th/vim-auto-save"] = {
+	lazy = false,
+	config = require("editor.vim-auto-save"),
+}
 
+editor["kkoomen/vim-doge"] = {
+	lazy = true,
+	event = "FileType",
+	build = "npm i --no-save && npm run build:binary:unix",
+	-- build = ":call doge#install()",
+	config = require("editor.vim-doge"),
+}
 ----------------------------------------------------------------------
 --                  :treesitter related plugins                    --
 ----------------------------------------------------------------------

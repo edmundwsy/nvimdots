@@ -12,12 +12,12 @@ ui["akinsho/bufferline.nvim"] = {
 }
 ui["projekt0n/github-nvim-theme"] = {
 	lazy = false,
-	config = conf.github_theme,
+	config = require("ui.github_theme"),
 }
 
 ui["tanvirtin/monokai.nvim"] = {
 	lazy = false,
-	config = conf.monokai_theme,
+	config = require("ui.monokai_theme"),
 }
 ui["catppuccin/nvim"] = {
 	lazy = false,
