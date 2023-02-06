@@ -442,4 +442,14 @@ function config.wakatime()
 	require("wakatime").setup()
 end
 
+function config.texlabconfig()
+	require("texlabconfig").setup({
+		cache_active = true,
+		cache_filetypes = { "tex", "bib" },
+		cache_root = vim.fn.stdpath("cache"),
+		reverse_search_edit_cmd = vim.cmd.edit,
+		file_permission_mode = 438,
+	})
+end
+
 return config

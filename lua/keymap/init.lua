@@ -45,12 +45,8 @@ local plug_map = {
 	["n|gsc"] = map_cr("Lspsaga show_cursor_diagnostics"):with_noremap():with_silent(),
 	["n|gs"] = map_cr("lua vim.lsp.buf.signature_help()"):with_noremap():with_silent(),
 	["n|gr"] = map_cr("Lspsaga rename"):with_noremap():with_silent(),
-<<<<<<< HEAD
 	["n|gk"] = map_cr("Lspsaga hover_doc"):with_noremap():with_silent(),
-=======
 	["n|gR"] = map_cr("Lspsaga rename ++project"):with_noremap():with_silent(),
-	["n|K"] = map_cr("Lspsaga hover_doc"):with_noremap():with_silent(),
->>>>>>> v1.0.0
 	["n|ga"] = map_cr("Lspsaga code_action"):with_noremap():with_silent(),
 	["v|ga"] = map_cu("Lspsaga code_action"):with_noremap():with_silent(),
 	["n|gd"] = map_cr("Lspsaga peek_definition"):with_noremap():with_silent(),

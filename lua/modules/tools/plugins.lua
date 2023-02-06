@@ -58,4 +58,11 @@ tools["mrjones2014/legendary.nvim"] = {
 	},
 }
 
+tools["f3fora/nvim-texlabconfig"] = {
+	lazy = true,
+	config = conf.texlabconfig,
+	build = "go build",
+	ft = { "tex", "bib" },
+}
+
 return tools

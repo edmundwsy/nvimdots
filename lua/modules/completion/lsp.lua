@@ -39,6 +39,7 @@ mason_lsp.setup({
 		"clangd",
 		"gopls",
 		"pyright",
+		"texlab",
 	},
 })
 
@@ -217,6 +218,37 @@ for _, server in ipairs(mason_lsp.get_installed_servers()) do
 							url = "https://json.schemastore.org/github-workflow.json",
 						},
 					},
+				},
+			},
+		})
+	elseif server == "texlab" then
+		nvim_lsp.texlab.setup({
+			single_file_support = true,
+			setting = {
+				texlab = {
+					build = {
+						onSave = true,
+						forwardSearchAfter = true,
+					},
+					chktex = {
+						onOpenAndSave = true,
+					},
+					forwardSearch = {
+						onSave = true,
+						executable = "evince",
+						args = {
+							"--reuse-window",
+							"--inverse-search",
+							[[nvim-texlabconfig -file %1 -line %2]],
+							"--forward-search-file",
+							"%f",
+							"--forward-search-line",
+							"%l",
+							"%p",
+						},
+					},
+					latexFormatter = "latexindent",
+					latexindent = { modifyLineBreaks = false },
 				},
 			},
 		})
