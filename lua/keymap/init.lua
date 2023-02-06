@@ -2,7 +2,20 @@ local bind = require("keymap.bind")
 local map_cr = bind.map_cr
 local map_cu = bind.map_cu
 local map_cmd = bind.map_cmd
-require("keymap.config")
+local map_callback = bind.map_callback
+
+local _lazygit = nil
+local function toggle_lazygit()
+	if not _lazygit then
+		local Terminal = require("toggleterm.terminal").Terminal
+		_lazygit = Terminal:new({
+			cmd = "lazygit",
+			hidden = true,
+			direction = "float",
+		})
+	end
+	_lazygit:toggle()
+end
 
 local plug_map = {
 	-- nvim-bufdel
@@ -41,16 +54,16 @@ local plug_map = {
 	["n|go"] = map_cr("Lspsaga outline"):with_noremap():with_silent(),
 	["n|g["] = map_cr("Lspsaga diagnostic_jump_prev"):with_noremap():with_silent(),
 	["n|g]"] = map_cr("Lspsaga diagnostic_jump_next"):with_noremap():with_silent(),
-	["n|gsl"] = map_cr("Lspsaga show_line_diagnostics"):with_noremap():with_silent(),
-	["n|gsc"] = map_cr("Lspsaga show_cursor_diagnostics"):with_noremap():with_silent(),
-	["n|gs"] = map_cr("lua vim.lsp.buf.signature_help()"):with_noremap():with_silent(),
+	["n|<leader>sl"] = map_cr("Lspsaga show_line_diagnostics"):with_noremap():with_silent(),
+	["n|<leader>sc"] = map_cr("Lspsaga show_cursor_diagnostics"):with_noremap():with_silent(),
+	["n|gs"] = map_callback(function()
+			vim.lsp.buf.signature_help()
+		end)
+		:with_noremap()
+		:with_silent(),
 	["n|gr"] = map_cr("Lspsaga rename"):with_noremap():with_silent(),
-<<<<<<< HEAD
-	["n|gk"] = map_cr("Lspsaga hover_doc"):with_noremap():with_silent(),
-=======
 	["n|gR"] = map_cr("Lspsaga rename ++project"):with_noremap():with_silent(),
 	["n|K"] = map_cr("Lspsaga hover_doc"):with_noremap():with_silent(),
->>>>>>> v1.0.0
 	["n|ga"] = map_cr("Lspsaga code_action"):with_noremap():with_silent(),
 	["v|ga"] = map_cu("Lspsaga code_action"):with_noremap():with_silent(),
 	["n|gd"] = map_cr("Lspsaga peek_definition"):with_noremap():with_silent(),
@@ -61,7 +74,8 @@ local plug_map = {
 	["n|gps"] = map_cr("G push"):with_noremap():with_silent(),
 	["n|gpl"] = map_cr("G pull"):with_noremap():with_silent(),
 	-- toggleterm
-	-- ["t|<Esc><Esc>"] = map_cmd([[<C-\><C-n>]]), -- switch to normal mode in terminal.
+	["t|<Esc><Esc>"] = map_cmd([[<C-\><C-n>]]):with_silent(), -- switch to normal mode in terminal.
+	["t|jk"] = map_cmd([[<C-\><C-n>]]):with_silent(), -- switch to normal mode in terminal.
 	["n|<C-\\>"] = map_cr([[execute v:count . "ToggleTerm direction=horizontal"]]):with_noremap():with_silent(),
 	["i|<C-\\>"] = map_cmd("<Esc><Cmd>ToggleTerm direction=horizontal<CR>"):with_noremap():with_silent(),
 	["t|<C-\\>"] = map_cmd("<Esc><Cmd>ToggleTerm<CR>"):with_noremap():with_silent(),
@@ -74,8 +88,16 @@ local plug_map = {
 	["n|<A-d>"] = map_cr([[execute v:count . "ToggleTerm direction=float"]]):with_noremap():with_silent(),
 	["i|<A-d>"] = map_cmd("<Esc><Cmd>ToggleTerm direction=float<CR>"):with_noremap():with_silent(),
 	["t|<A-d>"] = map_cmd("<Esc><Cmd>ToggleTerm<CR>"):with_noremap():with_silent(),
-	["n|<leader>g"] = map_cr("lua toggle_lazygit()"):with_noremap():with_silent(),
-	["t|<leader>g"] = map_cmd("<Esc><Cmd>lua toggle_lazygit()<CR>"):with_noremap():with_silent(),
+	["n|<leader>g"] = map_callback(function()
+			toggle_lazygit()
+		end)
+		:with_noremap()
+		:with_silent(),
+	["t|<leader>g"] = map_callback(function()
+			toggle_lazygit()
+		end)
+		:with_noremap()
+		:with_silent(),
 	["n|<leader>G"] = map_cu("Git"):with_noremap():with_silent(),
 	-- Plugin trouble
 	["n|gt"] = map_cr("TroubleToggle"):with_noremap():with_silent(),
@@ -89,13 +111,24 @@ local plug_map = {
 	["n|<leader>ef"] = map_cr("NvimTreeFindFile"):with_noremap():with_silent(),
 	["n|<leader>er"] = map_cr("NvimTreeRefresh"):with_noremap():with_silent(),
 	-- Plugin Telescope
-	["n|<leader>u"] = map_cr("lua require('telescope').extensions.undo.undo()"):with_noremap():with_silent(),
-	["n|<leader>fp"] = map_cu("lua require('telescope').extensions.projects.projects{}"):with_noremap():with_silent(),
-	["n|<leader>fq"] = map_cu("lua require('telescope').extensions.frecency.frecency{}"):with_noremap():with_silent(),
-	["n|<leader>fr"] = map_cu("lua require('telescope').extensions.ros.packages{cwd='.' }")
+	["n|<leader>u"] = map_callback(function()
+			require("telescope").extensions.undo.undo()
+		end)
 		:with_noremap()
 		:with_silent(),
-	["n|<leader>fw"] = map_cu("lua require('telescope').extensions.live_grep_args.live_grep_args{}")
+	["n|<leader>fp"] = map_callback(function()
+			require("telescope").extensions.projects.projects({})
+		end)
+		:with_noremap()
+		:with_silent(),
+	["n|<leader>fr"] = map_callback(function()
+			require("telescope").extensions.frecency.frecency()
+		end)
+		:with_noremap()
+		:with_silent(),
+	["n|<leader>fw"] = map_callback(function()
+			require("telescope").extensions.live_grep_args.live_grep_args()
+		end)
 		:with_noremap()
 		:with_silent(),
 	["n|<leader>fe"] = map_cu("Telescope oldfiles"):with_noremap():with_silent(),
@@ -106,11 +139,19 @@ local plug_map = {
 	["n|<leader>fz"] = map_cu("Telescope zoxide list"):with_noremap():with_silent(),
 	["n|<leader>fb"] = map_cu("Telescope buffers"):with_noremap():with_silent(),
 	-- Plugin accelerate-jk
-	["n|j"] = map_cmd("v:lua.enhance_jk_move('j')"):with_silent():with_expr(),
-	["n|k"] = map_cmd("v:lua.enhance_jk_move('k')"):with_silent():with_expr(),
+	["n|j"] = map_callback(function()
+		return vim.api.nvim_replace_termcodes("<Plug>(accelerated_jk_gj)", true, true, true)
+	end):with_expr(),
+	["n|k"] = map_callback(function()
+		return vim.api.nvim_replace_termcodes("<Plug>(accelerated_jk_gk)", true, true, true)
+	end):with_expr(),
 	-- Plugin vim-eft
-	["n|;"] = map_cmd("v:lua.enhance_ft_move(';')"):with_expr(),
-	["n|,"] = map_cmd("v:lua.enhance_ft_move(',')"):with_expr(),
+	["n|;"] = map_callback(function()
+		return vim.api.nvim_replace_termcodes("<Plug>(clever-f-repeat-forward)", true, true, true)
+	end):with_expr(),
+	["n|,"] = map_callback(function()
+		return vim.api.nvim_replace_termcodes("<Plug>(clever-f-repeat-back)", true, true, true)
+	end):with_expr(),
 	-- Plugin Hop
 	["n|<leader>;"] = map_cu("HopWord"):with_noremap(),
 	["n|<leader>j"] = map_cu("HopLine"):with_noremap(),
@@ -118,8 +159,12 @@ local plug_map = {
 	["n|<leader>c"] = map_cu("HopChar1"):with_noremap(),
 	["n|<leader>cc"] = map_cu("HopChar2"):with_noremap(),
 	-- Plugin EasyAlign
-	["n|gea"] = map_cmd("v:lua.enhance_align('nea')"):with_expr(),
-	["x|gea"] = map_cmd("v:lua.enhance_align('xea')"):with_expr(),
+	["n|gea"] = map_callback(function()
+		return vim.api.nvim_replace_termcodes("<Plug>(EasyAlign)", true, true, true)
+	end):with_expr(),
+	["x|gea"] = map_callback(function()
+		return vim.api.nvim_replace_termcodes("<Plug>(EasyAlign)", true, true, true)
+	end):with_expr(),
 	-- Plugin MarkdownPreview
 	["n|<F12>"] = map_cr("MarkdownPreviewToggle"):with_noremap():with_silent(),
 	-- Plugin auto_session
@@ -130,19 +175,60 @@ local plug_map = {
 	["v|<leader>r"] = map_cr("SnipRun"):with_noremap():with_silent(),
 	["n|<leader>r"] = map_cu([[%SnipRun]]):with_noremap():with_silent(),
 	-- Plugin dap
-	["n|<F6>"] = map_cr("lua require('dap').continue()"):with_noremap():with_silent(),
-	["n|<F7>"] = map_cr("lua require('dap').terminate() require('dapui').close()"):with_noremap():with_silent(),
-	["n|<F8>"] = map_cr("lua require('dap').toggle_breakpoint()"):with_noremap():with_silent(),
-	["n|<F9>"] = map_cr("lua require('dap').step_into()"):with_noremap():with_silent(),
-	["n|<F10>"] = map_cr("lua require('dap').step_out()"):with_noremap():with_silent(),
-	["n|<F11>"] = map_cr("lua require('dap').step_over()"):with_noremap():with_silent(),
-	["n|<leader>db"] = map_cr("lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))")
+	["n|<F6>"] = map_callback(function()
+			require("dap").continue()
+		end)
 		:with_noremap()
 		:with_silent(),
-	["n|<leader>dc"] = map_cr("lua require('dap').run_to_cursor()"):with_noremap():with_silent(),
-	["n|<leader>dl"] = map_cr("lua require('dap').run_last()"):with_noremap():with_silent(),
-	["n|<leader>do"] = map_cr("lua require('dap').repl.open()"):with_noremap():with_silent(),
-	["o|m"] = map_cu([[lua require('tsht').nodes()]]):with_silent(),
+	["n|<F7>"] = map_callback(function()
+			require("dap").terminate()
+			require("dapui").close()
+		end)
+		:with_noremap()
+		:with_silent(),
+	["n|<F8>"] = map_callback(function()
+			require("dap").toggle_breakpoint()
+		end)
+		:with_noremap()
+		:with_silent(),
+	["n|<F9>"] = map_callback(function()
+			require("dap").step_into()
+		end)
+		:with_noremap()
+		:with_silent(),
+	["n|<F10>"] = map_callback(function()
+			require("dap").step_out()
+		end)
+		:with_noremap()
+		:with_silent(),
+	["n|<F11>"] = map_callback(function()
+			require("dap").step_over()
+		end)
+		:with_noremap()
+		:with_silent(),
+	["n|<leader>db"] = map_callback(function()
+			require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+		end)
+		:with_noremap()
+		:with_silent(),
+	["n|<leader>dc"] = map_callback(function()
+			require("dap").run_to_cursor()
+		end)
+		:with_noremap()
+		:with_silent(),
+	["n|<leader>dl"] = map_callback(function()
+			require("dap").run_last()
+		end)
+		:with_noremap()
+		:with_silent(),
+	["n|<leader>do"] = map_callback(function()
+			require("dap").repl.open()
+		end)
+		:with_noremap()
+		:with_silent(),
+	["o|m"] = map_callback(function()
+		require("tsht").nodes()
+	end):with_silent(),
 	-- Plugin Diffview
 	["n|<leader>D"] = map_cr("DiffviewOpen"):with_silent():with_noremap(),
 	["n|<leader><leader>D"] = map_cr("DiffviewClose"):with_silent():with_noremap(),

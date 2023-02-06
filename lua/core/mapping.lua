@@ -19,6 +19,10 @@ local def_map = {
 	["n|<C-l>"] = map_cmd("<C-w>l"):with_noremap(),
 	["n|<C-j>"] = map_cmd("<C-w>j"):with_noremap(),
 	["n|<C-k>"] = map_cmd("<C-w>k"):with_noremap(),
+	["t|<C-h>"] = map_cmd("<Cmd>wincmd h<CR>"):with_silent():with_noremap(),
+	["t|<C-l>"] = map_cmd("<Cmd>wincmd l<CR>"):with_silent():with_noremap(),
+	["t|<C-j>"] = map_cmd("<Cmd>wincmd j<CR>"):with_silent():with_noremap(),
+	["t|<C-k>"] = map_cmd("<Cmd>wincmd k<CR>"):with_silent():with_noremap(),
 	["n|<A-[>"] = map_cr("vertical resize -5"):with_silent(),
 	["n|<A-]>"] = map_cr("vertical resize +5"):with_silent(),
 	["n|<A-;>"] = map_cr("resize -2"):with_silent(),
@@ -41,8 +45,8 @@ local def_map = {
 	["c|<C-h>"] = map_cmd("<BS>"):with_noremap(),
 	["c|<C-t>"] = map_cmd([[<C-R>=expand("%:p:h") . "/" <CR>]]):with_noremap(),
 	-- Visual
-	["v|J"] = map_cmd(":m '>+1<cr>gv=gv"),
-	["v|K"] = map_cmd(":m '<-2<cr>gv=gv"),
+	["v|J"] = map_cmd(":m '>+1<CR>gv=gv"),
+	["v|K"] = map_cmd(":m '<-2<CR>gv=gv"),
 	["v|<"] = map_cmd("<gv"),
 	["v|>"] = map_cmd(">gv"),
 }
