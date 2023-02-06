@@ -21,6 +21,26 @@ return function()
 		sort_by = "name",
 		sync_root_with_cwd = true,
 		view = {
+			mappings = {
+				list = {
+					{
+						key = "e",
+						action = "edit_in_place",
+					},
+					{
+						key = "<C-e>",
+						cb = "<cmd>NvimTreeClose<cr>",
+					},
+					{
+						key = "y",
+						action = "copy",
+					},
+					{
+						key = "rb",
+						action = "rename_basename",
+					},
+				},
+			},
 			adaptive_size = false,
 			centralize_selection = false,
 			width = 30,
