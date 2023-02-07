@@ -61,11 +61,11 @@ editor["romainl/vim-cool"] = {
 	lazy = true,
 	event = { "CursorMoved", "InsertEnter" },
 }
-editor["907th/vim-auto-save"] = {
+editor["Pocco81/auto-save.nvim"] = {
 	lazy = true,
+	event = { "WinLeave", "BufLeave", "VimLeave" },
 	config = require("editor.auto-save"),
 }
-
 editor["kkoomen/vim-doge"] = {
 	lazy = true,
 	event = "FileType",
