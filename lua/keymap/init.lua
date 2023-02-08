@@ -39,8 +39,8 @@ local plug_map = {
 	-- nvim-bufdel
 	["n|<A-q>"] = map_cr("BufDel"):with_noremap():with_silent():with_desc("buffer: Close current"),
 	-- Bufferline
-	["n|<A-j>"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent():with_desc("buffer: Switch to next"),
-	["n|<A-k>"] = map_cr("BufferLineCyclePrev"):with_noremap():with_silent():with_desc("buffer: Switch to prev"),
+	["n|<A-k>"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent():with_desc("buffer: Switch to next"),
+	["n|<A-j>"] = map_cr("BufferLineCyclePrev"):with_noremap():with_silent():with_desc("buffer: Switch to prev"),
 	["n|<A-S-j>"] = map_cr("BufferLineMoveNext"):with_noremap():with_silent():with_desc("buffer: Move current to next"),
 	["n|<A-S-k>"] = map_cr("BufferLineMovePrev"):with_noremap():with_silent():with_desc("buffer: Move current to prev"),
 	["n|<leader>be"] = map_cr("BufferLineSortByExtension"):with_noremap():with_desc("buffer: Sort by extension"),
@@ -183,6 +183,8 @@ local plug_map = {
 		:with_silent()
 		:with_desc("lsp: Show quickfix list"),
 	["n|<leader>tl"] = map_cr("TroubleToggle loclist"):with_noremap():with_silent():with_desc("lsp: Show loclist"),
+	["n|<leader>tt"] = map_cr("TodoTrouble"):with_noremap():with_silent():with_desc("todo: Show trouble"),
+	["n|<leader>tf"] = map_cr("TodoQuickFix"):with_noremap():with_silent():with_desc("todo: Quick Fix"),
 	-- Plugin nvim-tree
 	["n|<C-e>"] = map_cr("NvimTreeFocus"):with_noremap():with_silent():with_desc("filetree: Focus"),
 	["n|<leader>nf"] = map_cr("NvimTreeFindFile"):with_noremap():with_silent():with_desc("filetree: Find file"),
@@ -240,6 +242,7 @@ local plug_map = {
 		:with_desc("editn: Change current direrctory by zoxide"),
 	["n|<leader>fb"] = map_cu("Telescope buffers"):with_noremap():with_silent():with_desc("find: Buffer opened"),
 	["n|<leader>fs"] = map_cu("Telescope grep_string"):with_noremap():with_silent():with_desc("find: Current word"),
+	["n|<leader>ft"] = map_cu("TodoTelescope"):with_noremap():with_silent():with_desc("find: TODO"),
 	-- Plugin accelerate-jk
 	["n|j"] = map_callback(function()
 		return t("<Plug>(accelerated_jk_gj)")

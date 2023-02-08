@@ -59,6 +59,11 @@ tool["gelguy/wilder.nvim"] = {
 tool["wakatime/vim-wakatime"] = {
 	lazy = false,
 }
+tool["folke/todo-comments.nvim"] = {
+	lazy = false,
+	dependencies = { { "nvim-lua/plenary.nvim" } },
+	config = require("tool.todo-comments"),
+}
 
 ----------------------------------------------------------------------
 --                        Telescope Plugins                         --
