@@ -184,11 +184,17 @@ local plug_map = {
 		:with_desc("lsp: Show quickfix list"),
 	["n|<leader>tl"] = map_cr("TroubleToggle loclist"):with_noremap():with_silent():with_desc("lsp: Show loclist"),
 	-- Plugin nvim-tree
-	["n|<C-n>"] = map_cr("NvimTreeToggle"):with_noremap():with_silent():with_desc("filetree: Toggle"),
+	["n|<C-e>"] = map_cr("NvimTreeFocus"):with_noremap():with_silent():with_desc("filetree: Focus"),
 	["n|<leader>nf"] = map_cr("NvimTreeFindFile"):with_noremap():with_silent():with_desc("filetree: Find file"),
 	["n|<leader>nr"] = map_cr("NvimTreeRefresh"):with_noremap():with_silent():with_desc("filetree: Refresh"),
 	-- Plugin Telescope
 	["n|<leader>u"] = map_callback(function()
+			require("telescope").extensions.undo.undo()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("editn: Show undo history"),
+	["n|<leader>fu"] = map_callback(function()
 			require("telescope").extensions.undo.undo()
 		end)
 		:with_noremap()
@@ -217,7 +223,7 @@ local plug_map = {
 		:with_noremap()
 		:with_silent()
 		:with_desc("find: Word in project"),
-	["n|<leader>fe"] = map_cu("Telescope oldfiles"):with_noremap():with_silent():with_desc("find: File by history"),
+	["n|<leader>fh"] = map_cu("Telescope oldfiles"):with_noremap():with_silent():with_desc("find: File by history"),
 	["n|<leader>ff"] = map_cu("Telescope find_files"):with_noremap():with_silent():with_desc("find: File in project"),
 	["n|<leader>fc"] = map_cu("Telescope colorscheme")
 		:with_noremap()
@@ -249,7 +255,7 @@ local plug_map = {
 		return t("<Plug>(clever-f-repeat-back)")
 	end):with_expr(),
 	-- Plugin Hop
-	["n|<leader>w"] = map_cu("HopWord"):with_noremap():with_desc("jump: Goto word"),
+	["n|<leader>;"] = map_cu("HopWord"):with_noremap():with_desc("jump: Goto word"),
 	["n|<leader>j"] = map_cu("HopLine"):with_noremap():with_desc("jump: Goto line"),
 	["n|<leader>k"] = map_cu("HopLine"):with_noremap():with_desc("jump: Goto line"),
 	["n|<leader>c"] = map_cu("HopChar1"):with_noremap():with_desc("jump: Goto one char"),

@@ -7,7 +7,7 @@ return function()
 			"<C-b>",
 			"<C-f>",
 			"zy",
-			"ze",
+			"<S-e>",
 			"zt",
 			"zz",
 			"zb",
