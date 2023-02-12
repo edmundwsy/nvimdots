@@ -1,5 +1,5 @@
 return function()
-	local transparent_background = false -- Set background transparency here!
+	local transparent_background = true -- Set background transparency here!
 	require("github-theme").setup({
 		theme_style = "dark",
 		function_style = "italic",
@@ -7,5 +7,6 @@ return function()
 
 		-- Change the "hint" color to the "orange" color, and make the "error" color bright red
 		colors = { hint = "orange", error = "#ff0000" },
+		transparent = transparent_background,
 	})
 end

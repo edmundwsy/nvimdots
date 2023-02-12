@@ -1,3 +1,3 @@
 return function()
-  vim.g.doge_mapping = "gx"
+	vim.g.doge_mapping = "<leader>x"
 end

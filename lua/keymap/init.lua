@@ -391,6 +391,10 @@ local plug_map = {
 		:with_silent()
 		:with_noremap()
 		:with_desc("editx: Toggle comment for block with selection"),
+	["n|gld"] = map_cr("DogeGenerate"):with_noremap():with_silent():with_desc("Doge: Generate doxygen "),
+	["n|<leader>qp"] = map_cr("QuartoPreview"):with_noremap():with_silent():with_desc("Quarto: Preview document "),
+	["n|<leader>qc"] = map_cr("QuartoClosePreview"):with_noremap():with_silent():with_desc("Quarto: Close preview "),
+	["n|<leader>qa"] = map_cr("QuartoActivate"):with_noremap():with_silent():with_desc("Quarto: Activate document "),
 }
 
 bind.nvim_load_mapping(plug_map)

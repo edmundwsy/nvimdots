@@ -61,7 +61,7 @@ local function init_palette()
 				overlay0 = "#6E6B6B",
 				surface2 = "#6E6C7E",
 				surface1 = "#575268",
-				surface0 = "#302D41",
+				surface0 = "#D1D9E0",
 
 				base = "#1D1536",
 				mantle = "#1C1C19",

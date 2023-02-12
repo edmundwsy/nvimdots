@@ -1,5 +1,15 @@
 local tool = {}
 
+tool["quarto-dev/quarto-nvim"] = {
+	dependencies = {
+		"jmbuhr/otter.nvim",
+		"neovim/nvim-lspconfig",
+	},
+	lazy = true,
+	event = "VeryLazy",
+	config = require("tool.quarto"),
+}
+
 tool["tpope/vim-fugitive"] = {
 	lazy = true,
 	cmd = { "Git", "G" },
