@@ -129,6 +129,8 @@ return function()
 			{ name = "buffer" },
 			{ name = "latex_symbols" },
 			{ name = "copilot" },
+			{ name = "emoji" },
+			{ name = "doxygen" },
 			-- { name = "cmp_tabnine" },
 		},
 	})

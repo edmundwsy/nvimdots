@@ -227,6 +227,10 @@ local plug_map = {
 		:with_desc("find: Word in project"),
 	["n|<leader>fh"] = map_cu("Telescope oldfiles"):with_noremap():with_silent():with_desc("find: File by history"),
 	["n|<leader>ff"] = map_cu("Telescope find_files"):with_noremap():with_silent():with_desc("find: File in project"),
+	["n|<leader>fm"] = map_cu("Telescope media_files")
+		:with_noremap()
+		:with_silent()
+		:with_desc("find: Media file in project"),
 	["n|<leader>fc"] = map_cu("Telescope colorscheme")
 		:with_noremap()
 		:with_silent()
@@ -243,6 +247,7 @@ local plug_map = {
 	["n|<leader>fb"] = map_cu("Telescope buffers"):with_noremap():with_silent():with_desc("find: Buffer opened"),
 	["n|<leader>fs"] = map_cu("Telescope grep_string"):with_noremap():with_silent():with_desc("find: Current word"),
 	["n|<leader>ft"] = map_cu("TodoTelescope"):with_noremap():with_silent():with_desc("find: TODO"),
+	["n|<leader>fk"] = map_cu("Telekasten panel"):with_noremap():with_silent():with_desc("find: Telekasten panel"),
 	-- Plugin accelerate-jk
 	["n|j"] = map_callback(function()
 		return t("<Plug>(accelerated_jk_gj)")

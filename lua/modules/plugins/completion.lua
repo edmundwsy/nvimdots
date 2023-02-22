@@ -35,9 +35,11 @@ completion["hrsh7th/nvim-cmp"] = {
 		{ "hrsh7th/cmp-nvim-lua" },
 		{ "andersevenrud/cmp-tmux" },
 		{ "hrsh7th/cmp-path" },
+		{ "hrsh7th/cmp-emoji" },
 		{ "f3fora/cmp-spell" },
 		{ "hrsh7th/cmp-buffer" },
 		{ "kdheepak/cmp-latex-symbols" },
+		{ "paopaol/cmp-doxygen" },
 		{
 			"windwp/nvim-autopairs",
 			config = require("completion.autopairs"),

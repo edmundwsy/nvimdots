@@ -99,6 +99,7 @@ tool["nvim-telescope/telescope.nvim"] = {
 		{ "jvgrootveld/telescope-zoxide" },
 		{ "bi0ha2ard/telescope-ros.nvim" },
 		{ "nvim-telescope/telescope-live-grep-args.nvim" },
+		{ "nvim-telescope/telescope-media-files.nvim" },
 	},
 }
 
@@ -127,4 +128,13 @@ tool["mfussenegger/nvim-dap"] = {
 	},
 }
 
+----------------------------------------------------------------------
+--                           Zettelkasten                           --
+----------------------------------------------------------------------
+tool["renerocksai/telekasten.nvim"] = {
+	lazy = true,
+	ft = "markdown",
+	dependencies = { "nvim-telescope/telescope.nvim" },
+	config = require("tool.telekasten"),
+}
 return tool
