@@ -25,6 +25,7 @@ tool["nvim-tree/nvim-tree.lua"] = {
 		"NvimTreeFindFile",
 		"NvimTreeFindFileToggle",
 		"NvimTreeRefresh",
+		"NvimTreeFocus",
 	},
 	config = require("tool.nvim-tree"),
 }
@@ -65,6 +66,14 @@ tool["gelguy/wilder.nvim"] = {
 	dependencies = { "romgrk/fzy-lua-native" },
 }
 
+tool["wakatime/vim-wakatime"] = {
+	lazy = false,
+}
+tool["folke/todo-comments.nvim"] = {
+	lazy = false,
+	dependencies = { { "nvim-lua/plenary.nvim" } },
+	config = require("tool.todo-comments"),
+}
 ----------------------------------------------------------------------
 --                        Telescope Plugins                         --
 ----------------------------------------------------------------------
@@ -88,6 +97,8 @@ tool["nvim-telescope/telescope.nvim"] = {
 		} },
 		{ "jvgrootveld/telescope-zoxide" },
 		{ "nvim-telescope/telescope-live-grep-args.nvim" },
+		{ "bi0ha2ard/telescope-ros.nvim" },
+		{ "nvim-telescope/telescope-media-files.nvim" },
 	},
 }
 

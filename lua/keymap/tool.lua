@@ -12,7 +12,7 @@ local plug_map = {
 	["n|<leader>G"] = map_cu("Git"):with_noremap():with_silent():with_desc("git: Open git-fugitive"),
 
 	-- Plugin: nvim-tree
-	["n|<C-n>"] = map_cr("NvimTreeToggle"):with_noremap():with_silent():with_desc("filetree: Toggle"),
+	["n|<C-e>"] = map_cr("NvimTreeFocus"):with_noremap():with_silent():with_desc("filetree: Toggle"),
 	["n|<leader>nf"] = map_cr("NvimTreeFindFile"):with_noremap():with_silent():with_desc("filetree: Find file"),
 	["n|<leader>nr"] = map_cr("NvimTreeRefresh"):with_noremap():with_silent():with_desc("filetree: Refresh"),
 
@@ -212,6 +212,8 @@ local plug_map = {
 		:with_noremap()
 		:with_silent()
 		:with_desc("debug: Open REPL"),
+	["n|<leader>tt"] = map_cr("TodoTrouble"):with_noremap():with_silent():with_desc("todo: Show trouble"),
+	["n|<leader>tf"] = map_cr("TodoQuickFix"):with_noremap():with_silent():with_desc("todo: Quick Fix"),
 }
 
 bind.nvim_load_mapping(plug_map)

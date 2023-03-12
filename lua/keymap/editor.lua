@@ -81,7 +81,7 @@ local plug_map = {
 		:with_desc("edit: Align with delimiter"),
 
 	-- Plugin: hop
-	["n|<leader>w"] = map_cu("HopWord"):with_noremap():with_desc("jump: Goto word"),
+	["n|<leader>;"] = map_cu("HopWord"):with_noremap():with_desc("jump: Goto word"),
 	["n|<leader>j"] = map_cu("HopLine"):with_noremap():with_desc("jump: Goto line"),
 	["n|<leader>k"] = map_cu("HopLine"):with_noremap():with_desc("jump: Goto line"),
 	["n|<leader>c"] = map_cu("HopChar1"):with_noremap():with_desc("jump: Goto one char"),
