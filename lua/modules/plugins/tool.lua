@@ -74,11 +74,29 @@ tool["folke/todo-comments.nvim"] = {
 	dependencies = { { "nvim-lua/plenary.nvim" } },
 	config = require("tool.todo-comments"),
 }
+
+-- tool["quarto-dev/quarto-nvim"] = {
+-- 	dependencies = { "jmbuhr/otter.nvim", "neovim/nvim-lspconfig" },
+-- 	config = require("tool.quarto"),
+-- }
+
+tool["lervag/vimtex"] = {
+	lazy = true,
+	ft = { "tex" },
+	config = require("tool.vimtex"),
+}
+
+tool["jghauser/auto-pandoc.nvim"] = {
+	lazy = true,
+	ft = { "markdown", "pandoc" },
+	dependencies = { "nvim-lua/plenary.nvim" },
+	config = require("tool.pandoc"),
+}
 ----------------------------------------------------------------------
 --                        Telescope Plugins                         --
 ----------------------------------------------------------------------
 tool["nvim-telescope/telescope.nvim"] = {
-	lazy = true,
+	lazy = false,
 	cmd = "Telescope",
 	config = require("tool.telescope"),
 	dependencies = {
