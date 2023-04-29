@@ -8,9 +8,9 @@ return function()
 			hide_nc_statusline = true,
 			styles = {
 				comments = "italic,bold",
-				functions = "NONE",
+				functions = "underline",
 				keywords = "bold",
-				variables = "underline",
+				variables = "NONE",
 			},
 			darken = {
 				floats = true,
@@ -43,6 +43,11 @@ return function()
 			all = {
 				htmlTag = { fg = "palette.red", bg = "#282c34", sp = "diag.hint", style = "underline,bold" },
 				DiagnosticHint = { link = "LspDiagnosticsDefaultHint" },
+				CursorLineNr = { fg = "#96CDFB" },
+				StatusLine = { fg = "#96CDFB" },
+				lualine_a_normal = { fg = "#96CDFB" },
+				lualine_b_normal = { fg = "#ffffff", bg = "#96CDFB" },
+				lualine_c_normal = { fg = "#ffffff", bg = "#96CDFB" },
 				-- this will remove the highlight groups
 				TSField = {},
 			},
