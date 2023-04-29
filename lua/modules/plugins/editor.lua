@@ -53,6 +53,12 @@ editor["phaazon/hop.nvim"] = {
 	event = "BufReadPost",
 	config = require("editor.hop"),
 }
+editor["ggandor/leap.nvim"] = {
+	lazy = true,
+	event = "BufReadPost",
+	config = require("editor.leap"),
+}
+
 editor["RRethy/vim-illuminate"] = {
 	lazy = true,
 	event = { "CursorHold", "CursorHoldI" },

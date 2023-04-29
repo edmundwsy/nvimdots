@@ -1,13 +1,51 @@
 return function()
-	local transparent_background = true -- Set background transparency here!
+	local transparent_background = false -- Set background transparency here!
+	-- Example config in Lua
 	require("github-theme").setup({
-		theme_style = "light",
-		function_style = "italic",
-		dark_sidebar = false,
-		sidebars = { "qf", "vista_kind", "terminal", "packer" },
+		options = {
+			transparent = transparent_background,
+			hide_end_of_buffer = true,
+			hide_nc_statusline = true,
+			styles = {
+				comments = "italic,bold",
+				functions = "NONE",
+				keywords = "bold",
+				variables = "underline",
+			},
+			darken = {
+				floats = true,
+				sidebars = {
+					enable = true,
+					list = {},
+				},
+			},
+		},
 
-		-- Change the "hint" color to the "orange" color, and make the "error" color bright red
-		colors = { hint = "orange", error = "#ff0000" },
-		transparent = transparent_background,
+		specs = {
+			-- Change the color of only the 'github_dark' theme's 'hint' color to magenta and make the 'error' color a dim red.
+			github_dark = {
+				diag = {
+					error = "#660000",
+					hint = "magenta.base",
+				},
+			},
+			-- Change the "hint" color to the "orange" color, and make the "error" color bright red.
+			all = {
+				diag = {
+					error = "#ff0000",
+					hint = "orange",
+				},
+			},
+		},
+
+		-- Overwrite the highlight groups for all colorschemes
+		groups = {
+			all = {
+				htmlTag = { fg = "palette.red", bg = "#282c34", sp = "diag.hint", style = "underline,bold" },
+				DiagnosticHint = { link = "LspDiagnosticsDefaultHint" },
+				-- this will remove the highlight groups
+				TSField = {},
+			},
+		},
 	})
 end

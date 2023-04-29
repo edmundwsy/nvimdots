@@ -69,11 +69,6 @@ tool["gelguy/wilder.nvim"] = {
 tool["wakatime/vim-wakatime"] = {
 	lazy = false,
 }
-tool["folke/todo-comments.nvim"] = {
-	lazy = false,
-	dependencies = { { "nvim-lua/plenary.nvim" } },
-	config = require("tool.todo-comments"),
-}
 
 -- tool["quarto-dev/quarto-nvim"] = {
 -- 	dependencies = { "jmbuhr/otter.nvim", "neovim/nvim-lspconfig" },
