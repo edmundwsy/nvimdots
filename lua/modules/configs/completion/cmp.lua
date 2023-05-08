@@ -81,7 +81,12 @@ return function()
 				})(entry, vim_item)
 				local strings = vim.split(kind.kind, "%s", { trimempty = true })
 				kind.kind = " " .. strings[1] .. " "
-				kind.menu = "    (" .. strings[2] .. ")"
+				if strings[2] == nil or strings[2] == "" then
+					kind.menu = "  (new)  "
+				else
+					kind.menu = "  (" .. strings[2] .. ")  "
+				end
+
 				return kind
 			end,
 		},
@@ -96,8 +101,8 @@ return function()
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
-				elseif require("luasnip").expand_or_jumpable() then
-					vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
+				elseif require("luasnip").expand_or_locally_jumpable() then
+					vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"))
 				else
 					fallback()
 				end
@@ -123,14 +128,13 @@ return function()
 			{ name = "nvim_lua" },
 			{ name = "luasnip" },
 			{ name = "path" },
-			{ name = "treesitter" },
+			-- { name = "treesitter" },
 			{ name = "spell" },
-			-- { name = "tmux" },
-			-- { name = "orgmode" },
+			{ name = "tmux" },
+			{ name = "orgmode" },
 			{ name = "buffer" },
 			{ name = "latex_symbols" },
 			{ name = "copilot" },
-			{ name = "doxygen" },
 			-- { name = "codeium" },
 			-- { name = "cmp_tabnine" },
 		},

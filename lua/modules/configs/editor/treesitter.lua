@@ -1,4 +1,4 @@
-return function()
+return vim.schedule_wrap(function()
 	local use_ssh = require("core.settings").use_ssh
 
 	vim.api.nvim_set_option_value("foldmethod", "expr", {})
@@ -12,7 +12,6 @@ return function()
 			"css",
 			"go",
 			"gomod",
-			"help",
 			"html",
 			"javascript",
 			"json",
@@ -24,6 +23,7 @@ return function()
 			"python",
 			"rust",
 			"typescript",
+			"vimdoc",
 			"vue",
 			"yaml",
 		},
@@ -85,4 +85,4 @@ return function()
 			p.install_info.url = p.install_info.url:gsub("https://github.com/", "git@github.com:")
 		end
 	end
-end
+end)
