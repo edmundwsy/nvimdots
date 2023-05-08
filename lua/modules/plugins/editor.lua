@@ -53,6 +53,12 @@ editor["phaazon/hop.nvim"] = {
 	event = "BufReadPost",
 	config = require("editor.hop"),
 }
+editor["ggandor/leap.nvim"] = {
+	lazy = true,
+	event = "BufReadPost",
+	config = require("editor.leap"),
+}
+
 editor["RRethy/vim-illuminate"] = {
 	lazy = true,
 	event = { "CursorHold", "CursorHoldI" },
@@ -61,6 +67,14 @@ editor["RRethy/vim-illuminate"] = {
 editor["romainl/vim-cool"] = {
 	lazy = true,
 	event = { "CursorMoved", "InsertEnter" },
+}
+
+editor["kkoomen/vim-doge"] = {
+	lazy = true,
+	event = "FileType",
+	build = "npm i --no-save && npm run build:binary:unix",
+	-- build = ":call doge#install()",
+	config = require("editor.vim-doge"),
 }
 editor["lambdalisue/suda.vim"] = {
 	lazy = true,

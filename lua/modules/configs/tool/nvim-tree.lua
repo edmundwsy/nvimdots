@@ -18,6 +18,30 @@ return function()
 		sort_by = "name",
 		sync_root_with_cwd = true,
 		view = {
+			mappings = {
+				list = {
+					{
+						key = "e",
+						action = "edit_in_place",
+					},
+					{
+						key = "<C-E>",
+						action = "close",
+					},
+					{
+						key = "y",
+						action = "copy",
+					},
+					{
+						key = "br",
+						action = "rename_basename",
+					},
+					{
+						key = "l",
+						action = "run_system",
+					},
+				},
+			},
 			adaptive_size = false,
 			centralize_selection = false,
 			width = 30,
@@ -113,14 +137,14 @@ return function()
 			use_system_clipboard = true,
 			change_dir = {
 				enable = true,
-				global = false,
+				global = true,
 			},
 			open_file = {
 				quit_on_open = false,
 				resize_window = false,
 				window_picker = {
 					enable = true,
-					chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+					chars = "FGHJKLDSA",
 					exclude = {
 						filetype = { "notify", "qf", "diff", "fugitive", "fugitiveblame" },
 						buftype = { "terminal", "help" },

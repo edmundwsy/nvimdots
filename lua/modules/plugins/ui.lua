@@ -19,6 +19,14 @@ ui["sainnhe/edge"] = {
 	lazy = true,
 	config = require("ui.edge"),
 }
+ui["projekt0n/github-nvim-theme"] = {
+	lazy = false,
+	config = require("ui.github-nvim-theme"),
+}
+ui["tanvirtin/monokai.nvim"] = {
+	lazy = false,
+	config = require("ui.monokai"),
+}
 ui["j-hui/fidget.nvim"] = {
 	lazy = true,
 	event = "LspAttach",

@@ -19,6 +19,7 @@ tool["nvim-tree/nvim-tree.lua"] = {
 		"NvimTreeFindFile",
 		"NvimTreeFindFileToggle",
 		"NvimTreeRefresh",
+		"NvimTreeFocus",
 	},
 	config = require("tool.nvim-tree"),
 }
@@ -64,11 +65,32 @@ tool["gelguy/wilder.nvim"] = {
 	dependencies = { "romgrk/fzy-lua-native" },
 }
 
+tool["wakatime/vim-wakatime"] = {
+	lazy = false,
+}
+
+-- tool["quarto-dev/quarto-nvim"] = {
+-- 	dependencies = { "jmbuhr/otter.nvim", "neovim/nvim-lspconfig" },
+-- 	config = require("tool.quarto"),
+-- }
+
+tool["lervag/vimtex"] = {
+	lazy = true,
+	ft = { "tex" },
+	config = require("tool.vimtex"),
+}
+
+tool["jghauser/auto-pandoc.nvim"] = {
+	lazy = true,
+	ft = { "markdown", "pandoc" },
+	dependencies = { "nvim-lua/plenary.nvim" },
+	config = require("tool.pandoc"),
+}
 ----------------------------------------------------------------------
 --                        Telescope Plugins                         --
 ----------------------------------------------------------------------
 tool["nvim-telescope/telescope.nvim"] = {
-	lazy = true,
+	lazy = false,
 	cmd = "Telescope",
 	config = require("tool.telescope"),
 	dependencies = {
@@ -86,6 +108,8 @@ tool["nvim-telescope/telescope.nvim"] = {
 		} },
 		{ "jvgrootveld/telescope-zoxide" },
 		{ "nvim-telescope/telescope-live-grep-args.nvim" },
+		{ "bi0ha2ard/telescope-ros.nvim" },
+		{ "nvim-telescope/telescope-media-files.nvim" },
 	},
 }
 
