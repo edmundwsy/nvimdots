@@ -12,10 +12,6 @@ local plug_map = {
 	["n|g["] = map_cr("Lspsaga diagnostic_jump_prev"):with_noremap():with_silent():with_desc("lsp: Prev diagnostic"),
 	["n|g]"] = map_cr("Lspsaga diagnostic_jump_next"):with_noremap():with_silent():with_desc("lsp: Next diagnostic"),
 	["n|gsl"] = map_cr("Lspsaga show_line_diagnostics"):with_noremap():with_silent():with_desc("lsp: Line diagnostic"),
-	["n|gsc"] = map_cr("Lspsaga show_cursor_diagnostics")
-		:with_noremap()
-		:with_silent()
-		:with_desc("lsp: Cursor diagnostic"),
 	["n|gsh"] = map_callback(function()
 			vim.lsp.buf.signature_help()
 		end)
@@ -28,8 +24,7 @@ local plug_map = {
 		:with_silent()
 		:with_desc("lsp: Rename in project range"),
 	["n|K"] = map_cr("Lspsaga hover_doc"):with_noremap():with_silent():with_desc("lsp: Show doc"),
-	["n|ga"] = map_cr("Lspsaga code_action"):with_noremap():with_silent():with_desc("lsp: Code action for cursor"),
-	["v|ga"] = map_cu("Lspsaga code_action"):with_noremap():with_silent():with_desc("lsp: Code action for range"),
+	["nv|ga"] = map_cr("Lspsaga code_action"):with_noremap():with_silent():with_desc("lsp: Code action"),
 	["n|gd"] = map_cr("Lspsaga peek_definition"):with_noremap():with_silent():with_desc("lsp: Preview definition"),
 	["n|gD"] = map_cr("Lspsaga goto_definition"):with_noremap():with_silent():with_desc("lsp: Goto definition"),
 	["n|gh"] = map_cr("Lspsaga lsp_finder"):with_noremap():with_silent():with_desc("lsp: Show reference"),

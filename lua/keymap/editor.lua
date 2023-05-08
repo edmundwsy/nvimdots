@@ -69,16 +69,7 @@ local plug_map = {
 	["n|<leader><leader>D"] = map_cr("DiffviewClose"):with_silent():with_noremap():with_desc("git: Close diff"),
 
 	-- Plugin: vim-easy-align
-	["n|gea"] = map_callback(function()
-			return et("<Plug>(EasyAlign)")
-		end)
-		:with_expr()
-		:with_desc("edit: Align with delimiter"),
-	["x|gea"] = map_callback(function()
-			return et("<Plug>(EasyAlign)")
-		end)
-		:with_expr()
-		:with_desc("edit: Align with delimiter"),
+	["nx|gea"] = map_cr("EasyAlign"):with_desc("edit: Align with delimiter"),
 
 	-- Plugin: hop
 	["n|<leader>;"] = map_cu("HopWord"):with_noremap():with_desc("jump: Goto word"),
@@ -87,12 +78,16 @@ local plug_map = {
 	["n|<leader>c"] = map_cu("HopChar1"):with_noremap():with_desc("jump: Goto one char"),
 	["n|<leader>cc"] = map_cu("HopChar2"):with_noremap():with_desc("jump: Goto two chars"),
 
+
 	-- Plugin: treehopper
 	["o|m"] = map_cu("lua require('tsht').nodes()"):with_silent():with_desc("jump: Operate across syntax tree"),
 
 	-- Plugin: tabout
 	["i|<A-l>"] = map_cmd("<Plug>(TaboutMulti)"):with_silent():with_noremap():with_desc("edit: Goto end of pair"),
 	["i|<A-h>"] = map_cmd("<Plug>(TaboutBackMulti)"):with_silent():with_noremap():with_desc("edit: Goto begin of pair"),
+
+	-- Plugin suda.vim
+	["n|<A-s>"] = map_cu("SudaWrite"):with_silent():with_noremap():with_desc("editn: Save file using sudo"),
 }
 
 bind.nvim_load_mapping(plug_map)

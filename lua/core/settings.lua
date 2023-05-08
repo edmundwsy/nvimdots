@@ -9,6 +9,10 @@ settings["use_ssh"] = true
 ---@type boolean
 settings["format_on_save"] = true
 
+-- Set it to false if diagnostics virtual text is annoying for you
+---@type boolean
+settings["diagnostics_virtual_text"] = true
+
 -- Set the format disabled directories here, files under these dirs won't be formatted on save.
 ---@type string[]
 settings["format_disabled_dirs"] = {
@@ -32,11 +36,20 @@ settings["palette_overwrite"] = {}
 ---@type string
 settings["colorscheme"] = "edge"
 
+-- Set it to true if your terminal has transparent background.
+---@type boolean
+settings["transparent_background"] = false
+
 -- Set background color to use here.
 -- Useful if you would like to use a colorscheme that has a light and dark variant like `edge`.
 -- Valid values are: `dark`, `light`.
 ---@type "dark"|"light"
 settings["background"] = "dark"
+
+-- Set the command for handling external URLs here. The executable must be available on your $PATH.
+-- This entry is IGNORED on Windows and macOS, which have their default handlers builtin.
+---@type string
+settings["external_browser"] = "chrome-cli open"
 
 -- Filetypes in this list will skip lsp formatting if rhs is true
 ---@type table<string, boolean>
@@ -50,6 +63,7 @@ settings["server_formatting_block_list"] = {
 	lua_ls = true,
 	tsserver = true,
 	clangd = true,
+	pylsp = true,
 }
 
 -- Set the language servers that will be installed during bootstrap here
@@ -62,7 +76,7 @@ settings["lsp_deps"] = {
 	"html",
 	"jsonls",
 	"lua_ls",
-	"pyright",
+	"pylsp",
 	-- "gopls",
 }
 
@@ -74,7 +88,6 @@ settings["lsp_deps"] = {
 settings["null_ls_deps"] = {
 	"black",
 	"clang_format",
-	"editorconfig_checker",
 	"prettier",
 	"rustfmt",
 	"shfmt",

@@ -48,9 +48,9 @@ Back to the left window, the status line is showed at the bottom of the window.
 You will see different content under different conditions. It will looks like
 this if you switch to the right window and move cursor to the second line.
 -------------------------------------------------------------------------------
-|Normal|main|  autocmd                        |~/.config/nvim|utf-8|LF|1%|2:1|
+|Normal|main| 󰅩 autocmd                        |~/.config/nvim|utf-8|LF|1%|2:1|
 -------------------------------------------------------------------------------
-" autocmd" indicates this line has a variable named "autocmd". So this part of
+"󰅩 autocmd" indicates this line has a variable named "autocmd". So this part of
 status line will show you the context of your cursor position. This feature
 is based on lsp, so it is disabled if corresponding lsp is not attach to current
 buffer.
@@ -105,7 +105,7 @@ The completion window will always show no matter what file you are editing.
 You can use `<Tab>`{normal} and `<S-Tab>`{normal} to select next and previous candidate in
 the completion window and use `<CR>`{normal} to confirm completion. You can also use
 `<C-n>`{normal} and `<C-p>`{normal} and `<C-y>`{normal} to do it. Sometimes you don't want confirm
-completion but just want to new a line, you can use `<C-e>`{normal} to close the
+completion but just want to new a line, you can use `<C-w>`{normal} to close the
 window manually.
 
 There are more functions provided by lsp besides code completion.
