@@ -13,7 +13,6 @@ return function()
 		hijack_cursor = true,
 		hijack_netrw = true,
 		hijack_unnamed_buffer_when_opening = true,
-		open_on_tab = false,
 		respect_buf_cwd = false,
 		sort_by = "name",
 		sync_root_with_cwd = true,
@@ -125,7 +124,7 @@ return function()
 		},
 		update_focused_file = {
 			enable = true,
-			update_root = true,
+			update_root = false,
 			ignore_list = {},
 		},
 		filters = {
