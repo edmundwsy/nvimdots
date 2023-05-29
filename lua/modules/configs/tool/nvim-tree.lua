@@ -15,7 +15,7 @@ return function()
 		hijack_unnamed_buffer_when_opening = true,
 		respect_buf_cwd = false,
 		sort_by = "name",
-		sync_root_with_cwd = true,
+		sync_root_with_cwd = false,
 		view = {
 			mappings = {
 				list = {
@@ -123,7 +123,7 @@ return function()
 			auto_open = true,
 		},
 		update_focused_file = {
-			enable = true,
+			enable = false,
 			update_root = false,
 			ignore_list = {},
 		},

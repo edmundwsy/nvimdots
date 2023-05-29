@@ -28,6 +28,10 @@ return function()
 				"markdown",
 			},
 		}),
+		btns.diagnostics.cpplint.with({
+			filetypes = { "c", "cpp" },
+			extra_args = { "--linelength=100" },
+		}),
 	}
 	null_ls.setup({
 		border = "rounded",
